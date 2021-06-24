@@ -26,6 +26,8 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'active_model_serializers'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

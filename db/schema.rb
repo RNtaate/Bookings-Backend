@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_124814) do
+ActiveRecord::Schema.define(version: 2021_06_25_120644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 2021_06_24_124814) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "massage_type"
+    t.string "date"
+    t.string "city"
+    t.bigint "user_id", null: false
+    t.bigint "massage_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["massage_id"], name: "index_appointments_on_massage_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
   create_table "massages", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -61,4 +74,6 @@ ActiveRecord::Schema.define(version: 2021_06_24_124814) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "massages"
+  add_foreign_key "appointments", "users"
 end

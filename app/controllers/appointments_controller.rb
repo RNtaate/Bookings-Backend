@@ -18,7 +18,8 @@ class AppointmentsController < ApplicationController
       }
     else
       render json: {
-        status: 401
+        status: 401,
+        errors: @appointment.errors
       }
     end
   end
@@ -35,7 +36,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.permit(:customer_name, :massage_type, :date, :city);
+    params.permit(:customer_name, :massage_type, :massage_id, :date, :city);
   end
-
 end

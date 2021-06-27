@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   include CurrentUserConcern
 
   def index
-    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage);
+    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage).order("date ASC");
     
     render json: @appointments
   end

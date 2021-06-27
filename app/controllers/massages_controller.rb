@@ -1,7 +1,7 @@
 class MassagesController < ApplicationController
 
   def index
-    @massages = Massage.all
+    @massages = Massage.all.order("name ASC");
     render json: @massages
   end
 
@@ -18,15 +18,16 @@ class MassagesController < ApplicationController
   end
 
   def create
-    @massage = Massage.create(massage_params)
-    if @massage
+    @massage = Massage.new(massage_params)
+    if @massage.save
       render json: {
         status: :created,
         massage: @massage
       }
     else
       render json: {
-        status: 401
+        status: 401,
+        errors: @massage.errors
       }
     end
   end

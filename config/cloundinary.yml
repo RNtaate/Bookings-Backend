@@ -1,0 +1,6 @@
+production:
+  cloud_name: rntaate
+  api_key: '178566592641226'
+  api_secret: uiiJXPdBLMsEeMDQkXAautmRUo8
+  enhance_image_tag: true
+  static_file_support: true

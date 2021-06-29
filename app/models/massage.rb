@@ -12,9 +12,6 @@ class Massage < ApplicationRecord
   def acceptable_image
     return unless massage_image.attached?
 
-    unless massage_image.byte_size <= 1.megabyte
-      errors.add(:massage_image, "is too big, Image must have maximum of 1mb")
-    end
+    errors.add(:massage_image, 'is too big, Image must have maximum of 1mb') if massage_image.byte_size > 1.megabyte
   end
-
 end

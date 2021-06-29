@@ -1,14 +1,13 @@
 class MassagesController < ApplicationController
-
   include CurrentUserConcern
 
   def index
-    @massages = Massage.all.order("name ASC");
+    @massages = Massage.all.order('name ASC')
     render json: @massages
   end
 
   def show
-    @massage = Massage.find(params[:id]);
+    @massage = Massage.find(params[:id])
 
     if @massage
       render json: @massage
@@ -20,19 +19,19 @@ class MassagesController < ApplicationController
   end
 
   def create
-    if (@current_user.id == 1) 
-      @massage = Massage.new(massage_params)
-      if @massage.save
-        render json: {
-          status: :created,
-          massage: @massage,
-        }
-      else
-        render json: {
-          status: 401,
-          errors: @massage.errors,
-        }
-      end
+    return if @current_user.id != 1
+
+    @massage = Massage.new(massage_params)
+    if @massage.save
+      render json: {
+        status: :created,
+        massage: @massage
+      }
+    else
+      render json: {
+        status: 401,
+        errors: @massage.errors
+      }
     end
   end
 

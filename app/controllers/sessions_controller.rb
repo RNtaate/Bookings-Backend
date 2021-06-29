@@ -1,12 +1,11 @@
 class SessionsController < ApplicationController
-  
   include CurrentUserConcern
 
   def create
-    user = User.find_by(username: params["user"]["username"]).try(:authenticate, params["user"]["password"]);
+    user = User.find_by(username: params['user']['username']).try(:authenticate, params['user']['password'])
 
     if user
-      session[:user_id] = user.id;
+      session[:user_id] = user.id
       render json: {
         status: :created,
         logged_in: true,
@@ -39,5 +38,4 @@ class SessionsController < ApplicationController
       logged_out: true
     }
   end
-
 end

@@ -1,15 +1,14 @@
 class AppointmentsController < ApplicationController
-
   include CurrentUserConcern
 
   def index
-    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage).order("date ASC");
-    
+    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage).order('date ASC')
+
     render json: @appointments
   end
 
   def create
-    @appointment = @current_user.appointments.build(appointment_params);
+    @appointment = @current_user.appointments.build(appointment_params)
 
     if @appointment.save
       render json: {
@@ -25,17 +24,16 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage);
+    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage)
     @appointment = Appointment.find(params[:id])
-    @appointment.destroy();
+    @appointment.destroy
 
     render json: @appointments
-    
   end
 
   private
 
   def appointment_params
-    params.permit(:customer_name, :massage_type, :massage_id, :date, :city);
+    params.permit(:customer_name, :massage_type, :massage_id, :date, :city)
   end
 end

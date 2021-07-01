@@ -118,9 +118,5 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-<<<<<<< HEAD
   config.action_mailer.default_url_options = { :host => "serene-depths-82382.herokuapp.com" }
-=======
-  config.action_mailer.default_url_options = { :host => "serene-depths-82382.herokuapp.com/" }
->>>>>>> 5ad896fe9d01c06efd7a42ec7348a674633a1256
 end

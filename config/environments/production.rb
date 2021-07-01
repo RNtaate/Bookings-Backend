@@ -118,5 +118,10 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { :host => "serene-depths-82382.herokuapp.com" }
+  # Action Mailer
+  config.action_mailer.default_url_options = { host: 'serene-depths-82382.herokuapp.com' } # for absolute urls in email
+  config.action_mailer.asset_host = "https://serene-depths-82382.herokuapp.com" # for image URLs in HTML email
+
+  # Allow generating absolute urls with routing url helpers.
+  Rails.application.routes.default_url_options[:host] = 'serene-depths-82382.herokuapp.com'
 end

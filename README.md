@@ -40,6 +40,10 @@
 `rails s`
 1. Start running the front-end application to send and receive data from the api on your local server.
 
+## Testing the project
+
+1. Run `bundle exec rspec`
+
 ## 🤝 Contributions
 
   There are two ways of contributing to this project:

@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
       }
     else
       render json: {
-        status: 401
-      }
+        status: 403,
+        error: 'Username and/or Password is incorrect'
+      }, status: 403
     end
   end
 

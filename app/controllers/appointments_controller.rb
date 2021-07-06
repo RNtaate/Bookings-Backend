@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   include CurrentUserConcern
 
   def index
-    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage).order('date ASC')
+    @appointments = Appointment.my_appointments(@current_user).ascending_date
 
     render json: @appointments
   end
@@ -24,7 +24,7 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointments = Appointment.where(user_id: @current_user.id).includes(:massage)
+    @appointments = Appointment.my_appointments(@current_user)
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
 

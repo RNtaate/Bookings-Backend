@@ -8,12 +8,12 @@ class RegistrationsController < ApplicationController
         status: :created,
         logged_in: true,
         user: user
-      }
+      }, status: :created
     else
       render json: {
-        status: 500,
+        status: 422,
         errors: user.errors
-      }
+      }, status: 422
     end
   end
 end

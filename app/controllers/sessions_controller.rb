@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         status: :created,
         logged_in: true,
         user: user
-      }
+      }, status: :created
     else
       render json: {
         status: 403,
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def logged_in
+  def show
     if @current_user
       render json: {
         logged_in: true,
@@ -32,11 +32,11 @@ class SessionsController < ApplicationController
     end
   end
 
-  def logout
+  def destroy
     reset_session
     render json: {
       status: 200,
       logged_out: true
-    }
+    }, status: 200
   end
 end

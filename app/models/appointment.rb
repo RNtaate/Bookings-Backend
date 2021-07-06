@@ -7,8 +7,8 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :city, presence: true
 
-  scope :where_user_is, -> (current_user) {where(user_id: current_user.id)}
-  scope :ascending_date, -> {order('date ASC')}
+  scope :where_user_is, ->(current_user) { where(user_id: current_user.id) }
+  scope :ascending_date, -> { order('date ASC') }
 
   def self.my_appointments(some_user)
     Appointment.where_user_is(some_user).includes(:massage)

@@ -15,5 +15,5 @@ class Massage < ApplicationRecord
     errors.add(:massage_image, 'is too big, Image must have maximum of 1mb') if massage_image.byte_size > 1.megabyte
   end
 
-  scope :ascending_order, -> {order('name ASC')}
+  scope :ascending_order, -> { order('name ASC') }
 end

@@ -2,7 +2,7 @@ class MassagesController < ApplicationController
   include CurrentUserConcern
 
   def index
-    @massages = Massage.all.order('name ASC')
+    @massages = Massage.all.ascending_order
     render json: @massages
   end
 

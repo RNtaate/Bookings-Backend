@@ -26,12 +26,12 @@ class MassagesController < ApplicationController
       render json: {
         status: :created,
         massage: @massage
-      }
+      }, status: :created
     else
       render json: {
-        status: 401,
+        status: 422,
         errors: @massage.errors
-      }
+      }, status: 422
     end
   end
 

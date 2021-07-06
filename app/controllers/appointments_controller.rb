@@ -14,12 +14,12 @@ class AppointmentsController < ApplicationController
       render json: {
         status: :created,
         appointment: @appointment
-      }
+      }, status: :created
     else
       render json: {
-        status: 401,
+        status: 422,
         errors: @appointment.errors
-      }
+      }, status: 422
     end
   end
 

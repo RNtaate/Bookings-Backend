@@ -13,7 +13,7 @@ class MassagesController < ApplicationController
       render json: @massage
     else
       render json: {
-        status: 404,
+        status: 404
       }, status: 404
     end
   end

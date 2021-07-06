@@ -1,8 +1,6 @@
 class RegistrationsController < ApplicationController
   def create
-    user = User.new(username: params['user']['username'], password: params['user']['password'],
-                    password_confirmation: params['user']['password_confirmation'])
-
+    user = User.new(user_params)
     if user.save
       render json: {
         status: :created,
@@ -15,5 +13,11 @@ class RegistrationsController < ApplicationController
         errors: user.errors
       }, status: 422
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end

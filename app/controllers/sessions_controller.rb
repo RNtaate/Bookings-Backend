@@ -39,4 +39,9 @@ class SessionsController < ApplicationController
       logged_out: true
     }, status: 200
   end
+
+  private
+  def session_params
+    params.require(:user).permit(:username, :password)
+  end
 end

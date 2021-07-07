@@ -23,10 +23,7 @@ class MassagesController < ApplicationController
 
     @massage = Massage.new(massage_params)
     if @massage.save
-      render json: {
-        status: :created,
-        massage: @massage
-      }, status: :created
+      render json: @massage, status: :created
     else
       render json: {
         status: 422,

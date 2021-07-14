@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   include CurrentUserConcern
 
   def create
-    user = User.find_by(username: params['user']['username']).try(:authenticate, params['user']['password'])
+    user = User.find_by(username: session_username_params).try(:authenticate, session_password_params)
 
     if user
       session[:user_id] = user.id
@@ -44,5 +44,13 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def session_username_params 
+    session_params['username']
+  end
+
+  def session_password_params
+    session_params['password']
   end
 end

@@ -4,7 +4,7 @@
 
 > This project is an api built with Ruby on Rails as the second half of the final capstone project in the Microverse program.
 
-> It is built to serve as the back-end of the capstone project by storing, managing and serving data to the front-end project, which project can be found at [this](https://github.com/RNtaate/bookings-frontend) Github repository
+> It is built to serve as the back-end of the capstone project by storing, managing and serving data to the front-end project, which project can be found at [this Github repository](https://github.com/RNtaate/bookings-frontend)
 
 > The project implements a REST API to manage database resources which include User, Massage Types, and Appointments data.
 

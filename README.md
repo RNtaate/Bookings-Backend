@@ -1,5 +1,8 @@
 # Bookings-Backend
 
+[![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)]()
+![Linters](https://github.com/RNtaate/Bookings-Backend/workflows/Linters/badge.svg)
+
 ## Project Description
 
 > This project is an api built with Ruby on Rails as the second half of the final capstone project in the Microverse program.
